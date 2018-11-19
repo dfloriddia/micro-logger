@@ -33,7 +33,7 @@ pipeline
         VsSolutionFile
 
             }
-   stages 
+/*   stages 
    {
        stage('Build') 
        {
@@ -54,7 +54,7 @@ pipeline
            }
  
        }
-
+*/
        stage ('Dotnet Build') 
        {
  
