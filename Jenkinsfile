@@ -33,26 +33,7 @@ pipeline
             }
    stages 
    {
-  /*     stage('Build') 
-       {
-           steps 
-           {
-           sh 'make' 
-           archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
-           }
-      
-
-       }
-       stage ('Checkout') 
-       {
  
-           steps 
-           {
-           git credentialsId: 'userId', url: 'https://github.com/NeelBhatt/SampleCliApp',branch: 'master'
-           }
- 
-       }
-  */
        stage ('Dotnet Build') 
        {
  
