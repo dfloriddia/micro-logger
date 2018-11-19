@@ -9,31 +9,52 @@ pipeline
     {
 
 
-        BackenDist='true'
-        DockerBuildArgs="--build-arg app=${env.GitRepo}"
-        Dockerfile=''
-        DockerImage='true'
-        DockerLatestImage=''
-        DockerRepositoryPWD='Stronzio38'
-        DockerRepositoryUser='ccnetmicroarea'
+        BackenDist="true"
+        Configuration="Release"
+        DockerBuildArgs="--build-arg app=${GitRepo}"
+        Dockerfile="/home/sysadmn/devops/dockerfile"
+        DockerImage="true"
+        DockerLatestImage="${DockerRepository}:latest"
+        DockerRepository="microarea/${env.GitRepo}"
+        DockerRepositoryPWD="Stronzio38"
+        DockerRepositoryUser="ccnetmicroarea"
         DockerTaggedImage=''
-        FrontendDist='true'
-        GitBranch=''
-        GitRepo='micro-logger'
-        LocalGitRepoDirectory=''
-        OutputDirectory=''
-        Solution='MicroLogger'
-        SolutionDirectory=''
-        StateDirectory=''
-        System32=''
-        Tag=''
-        Version=''
-        VsSolutionFile=''
+        FrontendDist="true"
+        GitBranch="micro-logger"
+        GitRepo="micro-logger"
+        LocalGitRepoDirectory="micro-logger"
+        OutputDirectory=" "
+        Solution="MicroLogger"
+        SolutionDirectory=" "
+        StateDirectory=" "
+        System32=" "
+        Tag=" "
+        Version=" "
+        VsSolutionFile=" "
 
             }
    stages 
    {
+  /*     stage('Build') 
+       {
+           steps 
+           {
+           sh 'make' 
+           archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+           }
+      
+
+       }
+       stage ('Checkout') 
+       {
  
+           steps 
+           {
+           git credentialsId: 'userId', url: 'https://github.com/NeelBhatt/SampleCliApp',branch: 'master'
+           }
+ 
+       }
+  */
        stage ('Dotnet Build') 
        {
  
@@ -49,7 +70,7 @@ pipeline
  
            steps 
            {
-           bat "dotnet publish ${env.VsSolutionFile} -c Release -o ${env.OutputDirectory} -p:Version=${env.Version},AssemblyVersion=${env.Version}"
+           bat "dotnet publish ${env.VsSolutionFile} -c ${env.Configuration} -o ${env.OutputDirectory} -p:Version=${env.Version},AssemblyVersion=${env.Version}"
            }
  
         }
@@ -71,7 +92,7 @@ pipeline
             steps 
             {
                 echo 'Build del micro_logger'
-                sh "docker build -f ${env.Dockerfile} ${env.DockerBuildArgs} -${env.DockerTaggedImage}  ${env.OutputDirectory}"
+                sh "docker build -f ${env.Dockerfile} ${env.DockerBuildArgs} -t ${env.DockerTaggedImage}  ${env.OutputDirectory}"
                 
             }
          }
@@ -110,6 +131,15 @@ pipeline
          }
     }
 }
+
+ 
+
+
+
+
+        
+            
+  
 
  
 
