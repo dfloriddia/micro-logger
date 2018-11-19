@@ -33,9 +33,9 @@ pipeline
         VsSolutionFile
 
             }
-/*   stages 
+   stages 
    {
-       stage('Build') 
+ /*      stage('Build') 
        {
            steps 
            {
