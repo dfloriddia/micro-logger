@@ -9,8 +9,8 @@ pipeline
     {
 
 
-        BackenDist="true"
-        Configuration="Release"
+        BackenDist='true'
+        Configuration='Release'
         DockerBuildArgs="--build-arg app=${env.GitRepo}"
         Dockerfile
         DockerImage='true'
