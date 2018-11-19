@@ -10,25 +10,25 @@ pipeline
 
 
         BackenDist='true'
-        Configuration='Release'
+        Configuration=''
         DockerBuildArgs="--build-arg app=${env.GitRepo}"
-        Dockerfile
+        Dockerfile=''
         DockerImage='true'
-        DockerLatestImage
+        DockerLatestImage=''
         DockerRepositoryPWD='Stronzio38'
         DockerRepositoryUser='ccnetmicroarea'
-        DockerTaggedImage
+        DockerTaggedImage=''
         FrontendDist='true'
-        GitBranch
+        GitBranch=''
         GitRepo='micro-logger'
-        LocalGitRepoDirectory
-        OutputDirectory
+        LocalGitRepoDirectory=''
+        OutputDirectory=''
         Solution='MicroLogger'
-        SolutionDirectory
-        StateDirectory
-        System32
-        tag=''
-        Version='2'
+        SolutionDirectory=''
+        StateDirectory=''
+        System32=''
+        Tag=''
+        Version=''
         VsSolutionFile=''
 
             }
@@ -59,7 +59,7 @@ pipeline
  
            steps 
            {
-               bat "dotnet build"
+           bat "dotnet build --configuration Release"
            }
  
        }
@@ -132,6 +132,13 @@ pipeline
 }
 
  
+
+
+
+
+        
+            
+  
 
 
 
