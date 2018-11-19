@@ -9,33 +9,32 @@ pipeline
     {
 
 
-        BackenDist
-        BaseDirectory
-        BricksDirectory
-        Configuration
-        DockerBuildArgs
+        BackenDist="true"
+        Configuration="Release"
+        DockerBuildArgs="--build-arg app=${env.GitRepo}"
         Dockerfile
-        DockerImage
+        DockerImage='true'
         DockerLatestImage
         DockerRepositoryPWD='Stronzio38'
         DockerRepositoryUser='ccnetmicroarea'
         DockerTaggedImage
-        FrontendDist
+        FrontendDist='true'
         GitBranch
-        GitRepo
+        GitRepo='micro-logger'
         LocalGitRepoDirectory
         OutputDirectory
-        Solution
+        Solution='MicroLogger'
         SolutionDirectory
         StateDirectory
         System32
+        tag=''
         Version='2'
-        VsSolutionFile
+        VsSolutionFile=''
 
             }
-   stages 
+  /* stages 
    {
- /*      stage('Build') 
+       stage('Build') 
        {
            steps 
            {
@@ -54,7 +53,7 @@ pipeline
            }
  
        }
-*/
+  */
        stage ('Dotnet Build') 
        {
  
@@ -131,6 +130,15 @@ pipeline
          }
     }
 }
+
+ 
+
+
+
+
+        
+            
+  
 
  
 
