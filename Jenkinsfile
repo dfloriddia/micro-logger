@@ -10,7 +10,6 @@ pipeline
 
 
         BackenDist='true'
-        Configuration=''
         DockerBuildArgs="--build-arg app=${env.GitRepo}"
         Dockerfile=''
         DockerImage='true'
@@ -69,7 +68,7 @@ pipeline
  
            steps 
            {
-           bat "dotnet publish ${env.VsSolutionFile} -c ${env.Configuration} -o ${env.OutputDirectory} -p:Version=${env.Version},AssemblyVersion=${env.Version}"
+           bat "dotnet publish ${env.VsSolutionFile} -c Release -o ${env.OutputDirectory} -p:Version=${env.Version},AssemblyVersion=${env.Version}"
            }
  
         }
