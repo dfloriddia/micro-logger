@@ -59,7 +59,7 @@ pipeline
  
            steps 
            {
-               bat "dotnet build --${env.configuration Release}"
+               bat "dotnet build --${env.Configuration}"
            }
  
        }
